@@ -8,7 +8,7 @@ procedure Dugga_0 is
 Alder, Artal, E, F, P: Integer;
 
 -- "... vi antar att inget namn är längre än 10 tecken"
-Efternamn, Fornamn: String(1..10);
+Efternamn, Fornamn: String(1..11);
 
 -- "... programmet du går är aldring längre än 50 tecken"
 Program: String(1..50);
@@ -45,6 +45,5 @@ Put(Artal - Alder, Width => 0);
 Put(" eller ");
 Put(Artal - Alder + 1, Width => 0);
 Put(".");
-
 
 end Dugga_0;
