@@ -38,6 +38,7 @@ Put("Trevligt att du går på programmet ");
 Put("""");
 Put(Program(2..P)); -- börjar på plats 2 för att hoppa första mellanslaget
 Put("""");
+Put(".");
 New_Line;
 
 Put("Du är född antingen år ");
