@@ -3,7 +3,7 @@ with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Lab_2_Del_A is
--- deklarationer
+
 
     procedure InputMedValidering(MinValue: in Float; Value: out Float) is
 
@@ -32,6 +32,24 @@ procedure Lab_2_Del_A is
         end loop;
         
     end InputMedValidering;
+
+    procedure Inmatning(Pris1, Pris2, Steg, Moms: out Float) is
+
+    begin
+        Put("Första pris: ");
+        InputMedValidering(0.0, Pris1);
+        Put("Sista pris: ");
+        InputMedValidering(Pris1, Pris2);
+        Put("Steg: ");
+        InputMedValidering(0.0, Steg);
+        Put("Momsprocent: ");
+        InputMedValidering(0.0, Moms);
+        New_Line;
+
+        -- omvandla moms från procent till decimal
+        Moms:= Moms / 100.0;
+        
+    end Inmatning;
 
     procedure TabellPrint(Pris1, Pris2, Steg, Moms: in out Float) is
 
@@ -64,21 +82,8 @@ procedure Lab_2_Del_A is
 Pris1, Pris2, Steg, Moms: Float;
 
 begin
--- tilldela variabler värden
-Put("Första pris: ");
-InputMedValidering(0.0, Pris1);
-Put("Sista pris: ");
-InputMedValidering(Pris1, Pris2);
-Put("Steg: ");
-InputMedValidering(0.0, Steg);
-Put("Momsprocent: ");
-InputMedValidering(0.0, Moms);
-New_Line;
-
--- omvandla moms från procent till decimal
-Moms:= Moms / 100.0;
-
 -- skriv ut tabellen
+Inmatning(Pris1, Pris2, Steg, Moms);
 TabellPrint(Pris1, Pris2, Steg, Moms);
 
 end Lab_2_Del_A;

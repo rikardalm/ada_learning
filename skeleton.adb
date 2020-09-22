@@ -1,33 +1,52 @@
 -- with Ada.Float_Text_IO; use Ada.Float_Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Ada.Text_IO; use Ada.Text_IO;
+-- with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+-- with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Laboration_1 is
--- deklarationer
 
-    procedure DoubleValue(I1: in Integer; I2: out Integer) is
-    -- deklarationer
-
+---------------------------------------------------------
+function Double (I1: in Integer) return Integer is
+begin
+    return I1*2;
+end Double;
+---------------------------------------------------------
+procedure Inmatning(A, B, C: out Integer) is
+begin
+    Put("Mata in tre heltal: ");
+    Get(A);
+    Get(B);
+    Get(C);
+end Inmatning;
+---------------------------------------------------------
+procedure Swap(A, B: in out Integer) is
+    C: Integer;
     begin
-        I2:= I1 * 2;
-
-    end DoubleValue;
-
-
-    function Multiply (I1, I2: in Integer) return Integer is
-    -- deklarationer
-
+        C:= A;
+        A:= B;
+        B:= C;
+end Swap;
+---------------------------------------------------------
+procedure Print(A, B, C: in out Integer) is
     begin
-    -- instruktiooner
-        return I1 * I2;
-       
-    end Multiply;
+        Put(A, Width => 0);
+        Put(" < ");
+        Put(B, Width => 0);
+        Put(" < ");
+        Put(C, Width => 0);
+end Print;
+---------------------------------------------------------
+procedure PrintOffset(N: in out Integer) is
+    begin
+        for I in 1..N loop
+           Put(" ");
+        end loop;
+end PrintOffset;
+---------------------------------------------------------
 
-
--- C1, C2, C3: Character:= 'C';
--- F1, F2, F3: Float:= 0.0;
-I1, I2, I3: Integer:= 0;
--- S1, S2, S3 : String(1..5);
+-- C1: Character:= 'C';
+-- F1: Float:= 0.0;
+-- I1: Integer:= 0;
+-- S1 : String(1..5);
 
 begin
 -- instruktiooner
