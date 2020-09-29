@@ -22,3 +22,21 @@ for J in A'Range loop
 end loop;
 
 end Laboration_3;
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure Array_Demo2 is
+
+   type Row is array(1..3) of Integer;
+   type Board_A is array(1..3) of Row;
+
+   type Board_B is array(1..3,1..3) of Integer;
+
+   A : Board_A;
+   B : Board_B;
+
+begin
+   A(1)(1) := 2;
+   B(1,1) := 2;
+end Array_Demo2;

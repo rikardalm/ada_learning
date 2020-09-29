@@ -10,9 +10,9 @@ begin
 end GetRowCount;
 ---------------------------------------------------------
 function MiddleCheck (Index, Total: in Integer) return Boolean is
+
 begin
-   -- return Index = 4;
-   return Total - Index - 1 = Index;
+   return (Index*2) - Total = 1;
 end MiddleCheck;
 ---------------------------------------------------------
 procedure PrintOffset(N: in out Integer) is
@@ -22,27 +22,8 @@ procedure PrintOffset(N: in out Integer) is
       end loop;
 end PrintOffset;
 ---------------------------------------------------------
-
-N : Integer:= 1;
-
-begin
-
-   -- loops through all the rows
-   for I in 1..GetRowCount(N) loop
-
-      -- check if top
-      if(I = 1) then
-         PrintOffset(N);
-         Put("^");
-
-      -- check if bottom
-      elsif(I = GetRowCount(N)) then
-         PrintOffset(N);
-         Put("V");
-
-      -- check if middle, if true print horizontal row
-      elsif(MiddleCheck(3, 5)) then
-      -- elsif(MiddleCheck(I, GetRowCount(I))) then
+procedure PrintMiddle(N: in out Integer) is
+   begin
          Put("<");
 
          for J in 1..N loop      
@@ -56,8 +37,26 @@ begin
          end loop;
 
          Put(">");
+end PrintMiddle;
+---------------------------------------------------------
 
-      -- if checks does not match, print "|"
+N : Integer;
+
+begin
+
+   Put("Mata in ett heltal: ");
+   Get(N);
+
+   for I in 1..GetRowCount(N) loop
+      
+      if(MiddleCheck(I, GetRowCount(N))) then
+         PrintMiddle(N);
+      elsif(I = 1) then
+         PrintOffset(N);
+         Put("^");
+      elsif(I = GetRowCount(N)) then
+         PrintOffset(N);
+         Put("V");
       else
          PrintOffset(N);
          Put("|");
@@ -66,7 +65,5 @@ begin
       New_Line;
 
    end loop;
-
-
 
 end Laboration_1_VG;
