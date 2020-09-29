@@ -64,7 +64,7 @@ begin
     New_Line;   
 
     for I in 1..A'Length loop
-        B((A'Length +1)- I):= A(I);
+        B((A'Length +1) - I):= A(I);
     end loop;
 
     return B;
