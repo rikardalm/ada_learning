@@ -10,11 +10,14 @@ Ch: Character;
 
 begin
     --användaren matar in i följande format X, Y, Z
+    
+    Get(Ch); -- hämtar '(' från bufferten
     Get(Item.X);
-    Get(Ch);
+    Get(Ch); -- hämtar ',' från bufferten
     Get(Item.Y);
-    Get(Ch);
+    Get(Ch); -- hämtar ',' från bufferten
     Get(Item.Z);
+    Get(Ch); -- hämtar ')' från bufferten
 
 end Get;
 --------------------
