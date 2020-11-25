@@ -13,6 +13,7 @@ function Summarize(A: in Board) return Integer is
 Sum: Integer:= 0;
 
 begin
+
       for I in 1..A'Length loop
 
         for J in 1..A(1)'Length loop
@@ -37,6 +38,8 @@ begin
         end loop;
 
     end loop;
+
+
 end UserInput;
 -------------------------
 procedure PrintResult(Sum: in Integer) is

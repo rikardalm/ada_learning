@@ -15,6 +15,19 @@ begin
    
 end ReadWord;
 -------------------------
+procedure Get_Word(F: in File_Type; Word: out String; WordLength: out Integer) is 
+begin
+
+   Get_Line(F, Word, WordLength);
+
+   -- vid tom rad kommer if-satsen hindra 'END_ERROR'
+   if WordLength = Word'Length then
+      Skip_Line(F);
+   end if;
+
+end Get_Word;
+--------------------
+-------------------------
 function WordEndsWithChar(Char: in Character; Word: in String) return Boolean is
 begin
    return Word(Word'last) = Char;
@@ -38,14 +51,21 @@ begin
    LineCount:= 0;
 
    while not End_Of_File(File) loop
+      -- while not End_Of_Line(File) loop
+      
          LineCount:= LineCount + 1;
 
-         ReadWord(File, Word, WordLength);
+         Get_Word(File, Word, WordLength);
 
-         Put("Line Count: ");
-         Put(LineCount, 0);
-         New_Line;
+            -- if WordEndsWithChar('S', Word(1..WordLength)) then 
+            --    PrintWord(Word(1..WordLength), LineCount, WordLength);
+            -- end if; 
 
+            -- Put("Linecount: ");
+            -- Put(LineCount, 0);
+            -- New_Line;
+
+      -- end loop;
    end loop;
 
    Close(File);

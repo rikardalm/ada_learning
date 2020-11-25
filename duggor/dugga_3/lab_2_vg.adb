@@ -2,74 +2,76 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Lab_2_VG is
--------------------------
-procedure FetchYear(Year: out Integer) is
 
-SpaceDummy: Character;
-Suffix: String(1..5);
-Value: Integer;
+procedure Print(X, Y, N: in Integer) is
 
 begin
-    loop
-        Put("Mata in ett år: ");
-        Get(Value);
-        Get(SpaceDummy);
-        Get(Suffix);
 
-        if (Value > 0 and (Suffix = "e.Kr." or Suffix = "f.Kr.")) then
+    for I in 1..N loop 
 
-            if Suffix = "e.Kr." then
-                Year:= Value;
-            else 
-                Year:= Value * (-1);
-            end if;
-
-            exit;
-        else 
-            Put("Felaktigt år! ");
+        if I rem X = 0 and I rem Y = 0 then
+            Put("fie-fum");
+        elsif I rem X = 0 then 
+            Put("fie"); 
+        elsif I rem Y = 0 then 
+            Put("fum");
+        else
+            Put(I, 0);
         end if;
+
+        Put(" ");
 
     end loop;
     
-end FetchYear;
--------------------------
-function LeftYearIsLesser(Left, Right: in Integer) return Boolean is
-begin
-    return Left < Right;
-end LeftYearIsLesser;
--------------------------
-procedure PrintYearWithSuffix(Year: in Integer) is
+end Print;
+--------------------
+procedure UserInput(X, Y, N: out Integer) is
+
+HighestValue: Integer;
+
 begin 
-    if Year > 0 then
-        Put(Year, 0);
-        Put(" e.Kr.");
-    else 
-        Put((Year * (-1)), 0);
-        Put(" f.Kr.");
-    end if;
-    
-end PrintYearWithSuffix;
--------------------------
-procedure PrintResult(Y1, Y2: in Integer) is
-begin 
-    if LeftYearIsLesser(Y1, Y2) then
-        Put("År ");
-        PrintYearWithSuffix(Y1);
-        Put(" är tidigare än ");
-        PrintYearWithSuffix(Y2);
-    else
-        Put("År ");
-        PrintYearWithSuffix(Y2);
-        Put(" är tidigare än ");
-        PrintYearWithSuffix(Y1);
-    end if; 
-    
-end PrintResult;
--------------------------
-Y1, Y2: Integer;
+    Put("Mata in X: ");
+    Get(X);
+    HighestValue:= X;
+
+    -- felhantera Y
+    loop
+        Put("Mata in Y: ");
+        Get(Y);
+
+        if Y = X then
+            Put("Fel! X och Y får inte vara samma tal! ");
+            New_Line;
+        elsif Y > X then
+            HighestValue:= Y;
+            exit;
+        else 
+            exit;
+        end if;
+
+    end loop;
+
+    -- felhantera N
+    loop
+        Put("Mata in N: ");
+        Get(N);
+
+        if N < HighestValue then
+            Put("Fel! N måste vara >= ");
+            Put(HighestValue, 0);
+            New_Line;
+        else
+            exit;
+        end if;
+        
+    end loop;
+
+end UserInput;
+--------------------
+X, Y, N: Integer;
 
 begin
-    FetchYear(Y1);
-    FetchYear(Y2);
-    PrintResult(Y1,Y2);
+    UserInput(X,Y,N);
+    Print(X,Y,N);
+   
 end Lab_2_VG;
